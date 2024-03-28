@@ -1,38 +1,29 @@
-.App {
-  text-align: center;
+body{
+  background-color: blue;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#mainDiv{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#select-genre{
+  background-color: blueviolet;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#genre-label{
+  color: crimson;
 }
 
-.App-link {
-  color: #61dafb;
-}
+#movieList{
+  color: crimson;
+  background-color: blueviolet;
+  caret-color: blueviolet;
+  solid-color: blueviolet;
+  text-decoration-color: crimson;
+  border-block-color: crimson;
+  accent-color: crimson;
+  border-color: blueviolet;
+  column-rule-color: blue;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

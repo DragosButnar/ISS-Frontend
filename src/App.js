@@ -14,13 +14,22 @@ import {generate_movie_genre, generate_movie_title, generate_movie_year} from ".
 import {FormGroup} from "@mui/material";
 import AscButton from "./components/SortAscByTitleButton";
 import DescButton from "./components/SortDescByTitleButton";
-import YearPieChart, {formatData} from "./components/YearPieChart";
+import GenrePieChart, {chartData, formatData} from "./components/GenrePieChart";
 import {getYearDict} from "./components/MovieList.js";
-import InfiniteScroll from "react-infinite-scroll-component";
+import MovieScroll from "./components/MovieScroll";
+
 
 
 function App() {
     let initialMovies = [
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
+        new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
         new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
         new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
         new Movie(generate_movie_title(), generate_movie_year(), generate_movie_genre()),
@@ -33,14 +42,22 @@ function App() {
 
     const [m, sM] = useState(initialMovies)
 
-    const [pie, setPie] = useState(formatData(getYearDict(initialMovies)))
+    const [hasMore, setHasMore] = useState(true)
+
+    const [pie, setPie] = useState(chartData(initialMovies))
 
 
     return (
         <>
         <Box sx={{display:'column', flexDirection:'row',gap:2}}>
-            <Box sx={{display:'flex', flexDirection:'row',gap:2}}>
-                <MovieList data-testid={"movielist"} movies={m} setMovies={sM} title={t} setTitle={sT} year={y} setYear={sY} genre={g} setGenre={sG} chart={pie} setChart={setPie}/>
+            <Box sx={{display:'flex', flexDirection:'row',gap:2}} id={"mainBox"}>
+                <MovieScroll
+                             movies={m} setMovies={sM}
+                             more={hasMore} setMore={setHasMore}
+                             title={t} setTitle={sT}
+                             year={y} setYear={sY}
+                             genre={g} setGenre={sG}
+                             chart={pie} setChart={setPie}/>
                 <FormGroup>
                     <TitleInput title={t} setTitle={sT}/>
                     <YearInput year={y} setYear={sY}/>
@@ -56,7 +73,7 @@ function App() {
                 <AscButton movies={m} setMovies={sM}/>
                 <DescButton movies={m} setMovies={sM}/>
             </Box>
-            <YearPieChart movies={m} chart={pie} setChart={setPie}/>
+            <GenrePieChart movies={m} chart={pie} setChart={setPie}/>
         </Box>
         </>
     )

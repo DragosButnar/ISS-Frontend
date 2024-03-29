@@ -1,17 +1,6 @@
 import {React} from 'react';
 import {List, ListItem, ListItemButton, ListItemContent} from "@mui/joy";
 
-export function getYearDict(movies){
-    let data = {}
-    movies.forEach(movie=>{
-        console.log(movie)
-        if(movie.year in data)
-            data[movie.year] += 1
-        else
-            data[movie.year] = 1
-    })
-    return data
-}
 
 function MovieList(props){
     const movies_list = props.movies.map((movie, index) =>

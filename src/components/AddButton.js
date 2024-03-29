@@ -1,7 +1,7 @@
 import {Button} from "@mui/joy";
 import Movie from "../model/Movie";
 import {getYearDict, setYearDict} from "./MovieList";
-import {formatData} from "./YearPieChart";
+import {chartData, formatData} from "./GenrePieChart";
 
 export function addToList(props){
         let newMovies = [];
@@ -13,7 +13,7 @@ export function addToList(props){
             newMovies.push(movie)
 
         props.setMovies(newMovies)
-        props.setChart(formatData(getYearDict(newMovies)))
+        props.setChart(chartData(newMovies))
 }
 
 export default function AddButton(props){

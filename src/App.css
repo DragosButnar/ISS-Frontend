@@ -1,5 +1,5 @@
 body{
-  background-color: blue;
+  background-color: cyan;
 }
 
 #mainDiv{
@@ -26,4 +26,9 @@ body{
   border-color: blueviolet;
   column-rule-color: blue;
 
+}
+
+#movieScroll{
+  background-color: crimson;
+  color: chartreuse;
 }

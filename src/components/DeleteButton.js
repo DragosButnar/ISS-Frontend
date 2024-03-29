@@ -1,6 +1,6 @@
 import {Button} from "@mui/joy";
 import Movie from "../model/Movie";
-import {formatData} from "./YearPieChart";
+import {chartData, formatData} from "./GenrePieChart";
 import {getYearDict} from "./MovieList";
 
 function deleteFromList(props){
@@ -11,7 +11,7 @@ function deleteFromList(props){
     })
 
     props.setMovies(newMovies)
-    props.setChart(formatData(getYearDict(newMovies)))
+    props.setChart(chartData(newMovies))
 }
 
 export default function DeleteButton(props){

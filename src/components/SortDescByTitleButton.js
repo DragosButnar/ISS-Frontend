@@ -1,6 +1,10 @@
 import {Button} from "@mui/joy";
 import Movie from "../model/Movie";
 
+function strcmp ( str1, str2 ) {
+    return ( ( str1 == str2 ) ? 0 : ( ( str1 > str2 ) ? 1 : -1 ) );
+}
+
 export default function DescButton(props) {
     return (
         <Button
@@ -8,9 +12,11 @@ export default function DescButton(props) {
             onClick={
                 ()=>{
                     let newMovies = [];
+
                     props.movies.forEach((movie) =>
-                    {newMovies.push(new Movie(movie.title, movie.year, movie.genre, movie.id))})
-                    newMovies.sort((a, b) => {return -a.title.localeCompare(b.title)})
+                    {newMovies.push(new Movie(movie.title, movie.year, movie.genre, movie.franchise))})
+
+                    newMovies.sort((a, b) => {return -strcmp(a.title, b.title)})
                     props.setMovies(newMovies)
                 }
             }

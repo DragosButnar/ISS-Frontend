@@ -1,34 +1,31 @@
 class Movie {
-    static globalId=-1;
-    Movie(title, year, genre, id=-1){
-        if(id === -1)
-            this.id = Movie.newId();
-        else
-            this.id = id
+
+    constructor(title, year, genre, franchise){
         this.title = title;
         this.year = year;
         this.genre = genre;
+        this.franchise = franchise;
     }
 
-    constructor(title, year, genre, id=-1) {
-        if(id === -1)
-            this.id = Movie.newId();
-        else
-            this.id = id
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-    }
-    static newId(){
-        return ++Movie.globalId;
-    }
 
     toString(){
-        return `${this.title}(${this.year}) in ${this.genre}`
+        let result = `${this.title}(${this.year})`
+
+        if(this.genre !== null) {
+            result += " in "
+            result += this.genre
+        }
+
+        if(this.franchise !== null){
+            result += " part of "
+            result += this.franchise
+        }
+
+        return result
     }
 
     static equal(a, b){
-        return a.id === b.id || (a.title === b.title);
+        return (a.title === b.title);
     }
 
 }

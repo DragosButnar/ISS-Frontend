@@ -19,7 +19,7 @@ function MovieList(props){
         </ListItem>
     );
     return (
-        <List orientation={"vertical"} id={"movieList"} data-testid={"movieList"}>
+        <List orientation={"vertical"} id={"movieList"} data-testid={"movieList"} height={1/4}>
             {movies_list}
         </List>
     )

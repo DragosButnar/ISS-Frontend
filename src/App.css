@@ -1,12 +1,6 @@
 body{
   background-color: cyan;
 }
-
-#mainDiv{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 #select-genre{
   background-color: blueviolet;
 }
@@ -26,9 +20,4 @@ body{
   border-color: blueviolet;
   column-rule-color: blue;
 
-}
-
-#movieScroll{
-  background-color: crimson;
-  color: chartreuse;
 }

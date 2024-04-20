@@ -7,7 +7,6 @@ export function chartData(movieList){
 function getGenreDict(movies){
     let data = {}
     movies.forEach(movie=>{
-        console.log(movie)
         if(movie.genre in data)
             data[movie.genre] += 1
         else

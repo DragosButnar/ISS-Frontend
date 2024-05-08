@@ -17,7 +17,7 @@ function updateList(props){
             changeTitle = movie.title
             changeYear = props.year
             changeGenre = props.genre
-            changeFranchise = null
+            changeFranchise = props.name
             newMovies.push(new Movie(changeTitle, changeYear, changeGenre, changeFranchise))
         }
         else
@@ -29,15 +29,21 @@ function updateList(props){
         return;
     }
 
-    axios.put("http://localhost:8080/movies/" + changeTitle,
-        {title: changeTitle, year: changeYear, genre: changeGenre, franchise: changeFranchise}
-    ).then(respone => {
-        props.setMovies(newMovies)
-        props.setChart(chartData(newMovies))
-    }).catch(e => {
-        props.setMessage("Movie to be updated not found! -> " + changeId);
-        console.log("Error updating element -> " + changeId)
-    })
+    let franchise_id=-1;
+
+    axios.get("http://localhost:8080/franchises/" + changeFranchise)
+        .then(response => {franchise_id = response.data.id;
+            axios.put("http://localhost:8080/movies/" + changeTitle,
+                {title: changeTitle, year: changeYear, genre: changeGenre, franchise: franchise_id}
+            ).then(respone => {
+                props.setMovies(newMovies)
+                props.setChart(chartData(newMovies))
+            })
+        })
+        .catch(e => {
+            props.setMessage("Movie to be updated not found! -> " + changeId);
+            console.log("Error updating element -> " + changeId)
+        })
 }
 
 export default function UpdateButton(props){
